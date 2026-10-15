@@ -1,0 +1,28 @@
+import matplotlib.pyplot as plt
+
+A = (1, 1, 0)
+B = (4, 1, 0)
+C = (4, 4, 0)
+D = (1, 4, 0)
+E = (2.5, 2.5, 3)
+
+vertices = [A, B, C, D, E]
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+for nombre, v in zip(["A", "B", "C", "D", "E"], vertices):
+    ax.scatter(*v)
+    ax.text(*v, nombre)
+
+aristas = [
+    (A, B), (B, C), (C, D), (D, A),
+    (A, E), (B, E), (C, E), (D, E)
+]
+
+for p, q in aristas:
+    ax.plot([p[0], q[0]], [p[1], q[1]],
+            [p[2], q[2]])
+
+ax.set_title("Pirámide 3D")
+plt.show()

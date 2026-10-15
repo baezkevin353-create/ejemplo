@@ -1,0 +1,24 @@
+import matplotlib.pyplot as plt
+
+A = (1, 1, 0)
+B = (4, 1, 0)
+C = (4, 4, 0)
+D = (1, 4, 0)
+
+vertices = [A, B, C, D]
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+for nombre, v in zip(["A", "B", "C", "D"], vertices):
+    ax.scatter(*v)
+    ax.text(*v, nombre)
+
+aristas = [(A, B), (B, C), (C, D), (D, A)]
+
+for p, q in aristas:
+    ax.plot([p[0], q[0]], [p[1], q[1]],
+            [p[2], q[2]])
+
+ax.set_title("Cuadrado 3D")
+plt.show()
